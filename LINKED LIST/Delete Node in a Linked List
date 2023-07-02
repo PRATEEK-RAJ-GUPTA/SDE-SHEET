@@ -1,0 +1,11 @@
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        
+            node->val=node->next->val;
+            node->next=node->next->next;
+
+            if 4 5 1 9 is given and we have to delete 5 than just copy the next node value and point the node to next->next
+
+    }
+};
