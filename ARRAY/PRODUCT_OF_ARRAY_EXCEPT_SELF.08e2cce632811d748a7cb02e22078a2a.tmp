@@ -1,0 +1,19 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        ans=[1]*(len(nums))
+        #there is no prefix for the first element
+        #so starting the prefix will be 1
+        prf=1
+        #there is no postfix for the last element
+        #so at startng the postfix will be 1
+        pof=1
+
+        for i in range(len(nums)):
+            ans[i]=prf
+            prf*=nums[i]
+
+        for i in range(len(nums)-1,-1,-1):
+            ans[i]*=pof
+            pof*=nums[i]
+
+        return ans
