@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int func(vector<int>& nums,int target,vector<int>&dp,int idx){
+        if(idx==nums.size()-1) return 0;
+        if(dp[idx]!=INT_MIN) return dp[idx];
+        int ans=-1;
+        for(int i=idx+1;i<nums.size();i++){
+            if(abs(nums[i]-nums[idx])<=target){
+                int t=func(nums,target,dp,i);
+                if(t!=-1) ans=max(ans,t+1);
+            }
+        }
+        return dp[idx]=ans;
+    }
+public:
+    int maximumJumps(vector<int>& nums, int target) {
+        int n=nums.size();
+        vector<int>dp(n,INT_MIN);
+        //int ans=INT_MIN;
+        return func(nums,target,dp,0);
+    }
+};
