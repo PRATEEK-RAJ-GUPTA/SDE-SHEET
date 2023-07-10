@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void func(vector<int>&arr,vector<vector<int>>&ans,int n,int k,int idx){
+        if(arr.size()==k){
+            ans.push_back(arr);
+            return;
+        }
+        for(int i=idx;i<=n;i++){
+            arr.push_back(i);
+            func(arr,ans,n,k,i+1);
+            arr.pop_back();
+        }
+    }
+public:
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>>ans;
+        vector<int>arr;
+        func(arr,ans,n,k,1);
+        return ans;
+    }
+};
